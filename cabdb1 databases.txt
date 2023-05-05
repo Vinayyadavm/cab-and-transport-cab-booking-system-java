@@ -1,0 +1,329 @@
+Microsoft Windows [Version 10.0.19044.1288]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>cd C:\Program Files\MySQL\MySQL Server 8.0\bin
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql -u root -p
+Enter password: *********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 13
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| cabdb1             |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> create database cabdb1;
+ERROR 1007 (HY000): Can't create database 'cabdb1'; database exists
+mysql> use cabdb1;
+Database changed
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| cabdb1             |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use cabdb1;
+Database changed
+mysql> CREATE TABLE ACCOUNT (
+    -> username varchar(30),
+    -> name varchar(40),
+    -> Password varchar(30),
+    -> question varchar(100),
+    -> answer varchar(50)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> DESC ACCOUNT;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| username | varchar(30)  | YES  |     | NULL    |       |
+| name     | varchar(40)  | YES  |     | NULL    |       |
+| Password | varchar(30)  | YES  |     | NULL    |       |
+| question | varchar(100) | YES  |     | NULL    |       |
+| answer   | varchar(50)  | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> CREATE TABLE CUSTOMER (
+    -> username varchar(30),
+    -> id_type varchar(20),
+    -> number varchar(20),
+    -> name varchar(30),
+    -> gender varchar(15),
+    -> country varchar(20),
+    -> address varchar(50),
+    -> phone varchar(20),
+    -> email varchar(40)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> DESC customer;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| username | varchar(30) | YES  |     | NULL    |       |
+| id_type  | varchar(20) | YES  |     | NULL    |       |
+| number   | varchar(20) | YES  |     | NULL    |       |
+| name     | varchar(30) | YES  |     | NULL    |       |
+| gender   | varchar(15) | YES  |     | NULL    |       |
+| country  | varchar(20) | YES  |     | NULL    |       |
+| address  | varchar(50) | YES  |     | NULL    |       |
+| phone    | varchar(20) | YES  |     | NULL    |       |
+| email    | varchar(40) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+9 rows in set (0.00 sec)
+
+mysql> CREATE TABLE INTERCAB (
+    -> username varchar(30),
+    -> driver varchar(20),
+    -> source varchar(20),
+    -> destination varchar(30),
+    -> car varchar(15),
+    -> type varchar(20),
+    -> price varchar(50),
+    -> reference varchar(20)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> DESC intercab;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| username    | varchar(30) | YES  |     | NULL    |       |
+| driver      | varchar(20) | YES  |     | NULL    |       |
+| source      | varchar(20) | YES  |     | NULL    |       |
+| destination | varchar(30) | YES  |     | NULL    |       |
+| car         | varchar(15) | YES  |     | NULL    |       |
+| type        | varchar(20) | YES  |     | NULL    |       |
+| price       | varchar(50) | YES  |     | NULL    |       |
+| reference   | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> CREATE TABLE INTERCITY (
+    -> source varchar(20),
+    -> destination varchar(20),
+    -> type varchar(20),
+    -> driver varchar(20),
+    -> price varchar(20),
+    -> car varchar(50)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> DESC intercity;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| source      | varchar(20) | YES  |     | NULL    |       |
+| destination | varchar(20) | YES  |     | NULL    |       |
+| type        | varchar(20) | YES  |     | NULL    |       |
+| driver      | varchar(20) | YES  |     | NULL    |       |
+| price       | varchar(20) | YES  |     | NULL    |       |
+| car         | varchar(50) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> CREATE TABLE INTRACAB (
+    -> username varchar(30),
+    -> driver varchar(20),
+    -> source varchar(20),
+    -> destination varchar(30),
+    -> car varchar(15),
+    -> price varchar(50),
+    -> reference varchar(20)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> DESC intracab;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| username    | varchar(30) | YES  |     | NULL    |       |
+| driver      | varchar(20) | YES  |     | NULL    |       |
+| source      | varchar(20) | YES  |     | NULL    |       |
+| destination | varchar(30) | YES  |     | NULL    |       |
+| car         | varchar(15) | YES  |     | NULL    |       |
+| price       | varchar(50) | YES  |     | NULL    |       |
+| reference   | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> CREATE TABLE INTRACITY (
+    -> source varchar(20),
+    -> destination varchar(20),
+    -> driver varchar(20),
+    -> price varchar(20),
+    -> car varchar(50)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> DESC intracity;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| source      | varchar(20) | YES  |     | NULL    |       |
+| destination | varchar(20) | YES  |     | NULL    |       |
+| driver      | varchar(20) | YES  |     | NULL    |       |
+| price       | varchar(20) | YES  |     | NULL    |       |
+| car         | varchar(50) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> CREATE TABLE INTRANSPORT (
+    -> name varchar(20),
+    -> driver name varchar(20),
+    -> source varchar(20),
+    -> destination varchar(20),
+    -> truck varchar(20),
+    -> weight varchar(20),
+    -> distance varchar(20),
+    -> price varchar(20)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'name varchar(20),
+source varchar(20),
+destination varchar(20),
+truck varchar(20)' at line 3
+mysql> CREATE TABLE INTRANSPORT (
+    -> name varchar(20),
+    -> dname varchar(20),
+    -> source varchar(20),
+    -> destination varchar(20),
+    -> truck varchar(20),
+    -> weight varchar(20),
+    -> distance varchar(20),
+    -> price varchar(20)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> DESC intransport;;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| name        | varchar(20) | YES  |     | NULL    |       |
+| dname       | varchar(20) | YES  |     | NULL    |       |
+| source      | varchar(20) | YES  |     | NULL    |       |
+| destination | varchar(20) | YES  |     | NULL    |       |
+| truck       | varchar(20) | YES  |     | NULL    |       |
+| weight      | varchar(20) | YES  |     | NULL    |       |
+| distance    | varchar(20) | YES  |     | NULL    |       |
+| price       | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+ERROR:
+No query specified
+
+mysql> CREATE TABLE TRANSPORT (
+    -> source varchar(20),
+    -> destination varchar(20),
+    -> dname varchar(20),
+    -> price varchar(20),
+    -> truck varchar(20),
+    -> distance varchar(5)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> DESC transport;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| source      | varchar(20) | YES  |     | NULL    |       |
+| destination | varchar(20) | YES  |     | NULL    |       |
+| dname       | varchar(20) | YES  |     | NULL    |       |
+| price       | varchar(20) | YES  |     | NULL    |       |
+| truck       | varchar(20) | YES  |     | NULL    |       |
+| distance    | varchar(5)  | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> INSERT INTO ACCOUNT(username,name,password,question,answer) VALUES('user1','name1','pass1','Your Lucky Number',1);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO INTERCITY(source,destination,type,driver,price,car) VALUES('src1','dest1','Micro','driver1',1000,'car1');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT *from intercity;
++--------+-------------+-------+---------+-------+------+
+| source | destination | type  | driver  | price | car  |
++--------+-------------+-------+---------+-------+------+
+| src1   | dest1       | Micro | driver1 | 1000  | car1 |
++--------+-------------+-------+---------+-------+------+
+1 row in set (0.00 sec)
+
+mysql>  INSERT INTO INTERCITY(source,destination,type,driver,price,car) VALUES('src1','dest1','Mini','driver2',500,'car2');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  INSERT INTO INTERCITY(source,destination,type,driver,price,car) VALUES('src1','dest1','SUV','driver3',1500,'car3');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select *from intercity;
++--------+-------------+-------+---------+-------+------+
+| source | destination | type  | driver  | price | car  |
++--------+-------------+-------+---------+-------+------+
+| src1   | dest1       | Micro | driver1 | 1000  | car1 |
+| src1   | dest1       | Mini  | driver2 | 500   | car2 |
+| src1   | dest1       | SUV   | driver3 | 1500  | car3 |
++--------+-------------+-------+---------+-------+------+
+3 rows in set (0.00 sec)
+
+mysql> INSERT INTO INTRACITY(source,destination,driver,price,car) VALUES('src1','dest1','driver1',500,'car1');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select *from intracity;
++--------+-------------+---------+-------+------+
+| source | destination | driver  | price | car  |
++--------+-------------+---------+-------+------+
+| src1   | dest1       | driver1 | 500   | car1 |
++--------+-------------+---------+-------+------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO transport(source,destination,dname,price,truck,distance) VALUES('src1','dest1','driver1',10000,'truck1',300);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select *from transport;
++--------+-------------+---------+-------+--------+----------+
+| source | destination | dname   | price | truck  | distance |
++--------+-------------+---------+-------+--------+----------+
+| src1   | dest1       | driver1 | 10000 | truck1 | 300      |
++--------+-------------+---------+-------+--------+----------+
+1 row in set (0.00 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_cabdb1 |
++------------------+
+| account          |
+| customer         |
+| intercab         |
+| intercity        |
+| intracab         |
+| intracity        |
+| intransport      |
+| tables_in_cabdb1 |
+| transport        |
++------------------+
+9 rows in set (0.00 sec)
